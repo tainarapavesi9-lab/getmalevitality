@@ -62,7 +62,7 @@
     }
     </script>
 
-    <!-- FAVICON - Corrigido para a pasta images -->
+    <!-- FAVICON -->
     <link rel="icon" href="images/faviconV2.png" type="image/png">
 
     <meta name="robots" content="index,follow" />
@@ -117,7 +117,7 @@
         
         .modal-open { overflow: hidden; }
         
-        /* Estilização dos Botões CTA */
+        /* CTA Button Styling */
         .cta-button {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background-color: var(--accent-red);
@@ -151,7 +151,7 @@
             border: 1px solid rgba(193, 18, 31, 0.3);
         }
 
-        /* Estilos dos Testemunhos */
+        /* Testimonials Styles */
         .testimonial-card {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
@@ -165,7 +165,7 @@
             border-color: var(--accent-red);
         }
 
-        /* Animação de Scroll Horizontal Contínuo */
+        /* Continuous Horizontal Scroll Animation */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-320px * 3 - 1.5rem * 3)); }
@@ -175,7 +175,7 @@
             display: flex;
             gap: 1.5rem;
             width: max-content;
-            animation: scroll 40s linear infinite;
+            animation: scroll 45s linear infinite;
         }
 
         .scroller-track:hover {
@@ -211,7 +211,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Cabeçalho -->
+    <!-- Header -->
     <header class="sticky top-0 bg-[#000000] z-50 border-b border-white/5 shadow-2xl">
         <div class="container mx-auto flex justify-center items-center p-4">
             <span class="text-white font-extrabold text-2xl tracking-tighter logo-glow">STEEL<span class="text-[#C1121F]">POWER</span></span>
@@ -219,14 +219,14 @@
     </header>
 
     <main>
-        <!-- Secção Hero -->
+        <!-- Hero Section -->
         <section id="order" class="hero-section-bg">
             <div class="hero-overlay-pattern"></div>
             
             <div class="container mx-auto px-6 py-12 md:py-20 hero-container">
                 <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     
-                    <!-- Coluna de Texto -->
+                    <!-- Copy Column -->
                     <div class="text-center md:text-left reveal">
                         <div class="offer-badge rounded-full px-4 py-1.5 mb-8 inline-flex items-center gap-2 shadow-sm">
                             <div class="flex items-center">
@@ -269,7 +269,7 @@
                         </div>
                     </div>
 
-                    <!-- Coluna de Produto e Seleção -->
+                    <!-- Product & Selection Column -->
                     <div class="reveal flex flex-col items-center">
                         <div class="relative mb-12 group">
                             <div class="absolute -inset-10 bg-red-600 rounded-full blur-[80px] z-0 opacity-10 group-hover:opacity-20 transition-opacity"></div>
@@ -281,7 +281,7 @@
                                 <p class="font-bold text-slate-500 uppercase tracking-widest text-[10px] mb-4">HOW WOULD YOU LIKE TO ORDER?</p>
                                 
                                 <div class="flex flex-col gap-4">
-                                    <!-- BOTÃO DE DESTAQUE (DIRECT ORDER) -->
+                                    <!-- HIGHLIGHT BUTTON (DIRECT ORDER) -->
                                     <a href="https://myblogshop.top/r/bVrUQXr7/s" class="cta-button flex items-center justify-between px-8 py-5 rounded-2xl font-bold text-lg group shadow-lg w-full">
                                         <div class="flex flex-col items-start text-left">
                                             <span>Get 38% Off Today</span>
@@ -292,7 +292,7 @@
                                         </div>
                                     </a>
 
-                                    <!-- BOTÃO SECUNDÁRIO (VSL) -->
+                                    <!-- SECONDARY BUTTON (VSL) -->
                                     <a href="https://myblogshop.top/r/96yF6rYD/s" class="cta-secondary flex items-center justify-between px-8 py-5 rounded-2xl font-bold text-lg group shadow-md w-full">
                                         <div class="flex flex-col items-start text-left">
                                             <span>Watch How It Works</span>
@@ -304,7 +304,7 @@
                                     </a>
                                 </div>
                                 
-                                <!-- LINHA DE CONFIANÇA -->
+                                <!-- TRUST LINE -->
                                 <p class="mt-6 text-slate-500 text-[11px] font-medium flex items-center justify-center gap-2">
                                     <i data-feather="shield" class="w-3.5 h-3.5 text-[#C1121F]"></i>
                                     Secure & discreet shipping. One-time payment. No autoship.
@@ -317,14 +317,14 @@
             </div>
         </section>
 
-        <!-- Secção de Testemunhos -->
+        <!-- Testimonials Section -->
         <section class="py-24 bg-[#050505] overflow-hidden">
             <div class="container mx-auto px-6 mb-16 text-center">
                 <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">What Our Customers Say</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">Real results from verified SteelPower users across the USA.</p>
             </div>
 
-            <!-- Contentor do Scroller -->
+            <!-- Scroller Track -->
             <div class="relative w-full">
                 <div class="scroller-track px-6">
                     
@@ -391,7 +391,7 @@
                         </div>
                     </div>
 
-                    <!-- DUPLICADOS PARA LOOP INFINITO NO MOBILE -->
+                    <!-- DUPLICATE CARDS FOR INFINITE LOOP ON MOBILE -->
                     <div class="testimonial-card p-8 rounded-3xl flex flex-col justify-between lg:hidden">
                         <div>
                             <div class="flex gap-1 mb-4">
