@@ -62,53 +62,6 @@
     }
     </script>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How does SteelPower support male vitality?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It is designed to support natural energy, performance and confidence with consistent daily use."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is there a guarantee for SteelPower?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, there is a 60-day satisfaction guarantee for peace of mind."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is shipping discreet?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Orders are shipped in discreet packaging to ensure privacy."
-          }
-        }
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://getmalevitality.vercel.app/",
-      "name": "SteelPower Male Vitality Support",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://getmalevitality.vercel.app/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-
     <!-- FAVICON -->
     <link rel="icon" href="faviconV2.png" type="image/png">
 
@@ -132,6 +85,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: var(--dark-bg); 
             color: var(--text-main); 
+            overflow-x: hidden;
         }
 
         .star-filled { color: var(--accent-red); fill: var(--accent-red); }
@@ -163,10 +117,7 @@
         
         .modal-open { overflow: hidden; }
         
-        .brand-bg { background-color: var(--accent-red); }
-        .brand-text { color: var(--accent-red); }
-        .brand-border { border-color: var(--accent-red); }
-        
+        /* CTA Button Styling */
         .cta-button {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background-color: var(--accent-red);
@@ -204,32 +155,46 @@
         .testimonial-card {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
+            min-width: 320px;
+            max-width: 320px;
+            flex-shrink: 0;
             transition: border-color 0.3s ease;
         }
+        
         .testimonial-card:hover {
             border-color: var(--accent-red);
         }
 
-        /* Mobile Marquee Animation */
-        @media (max-width: 768px) {
-            .marquee-container {
-                display: flex;
-                overflow: hidden;
-                user-select: none;
+        /* Continuous Horizontal Scroll Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-320px * 3 - 1.5rem * 3)); }
+        }
+
+        .scroller-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .scroller-track:hover {
+            animation-play-state: paused;
+        }
+
+        @media (min-width: 1024px) {
+            .scroller-track {
+                animation: none;
+                width: 100%;
+                justify-content: center;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 1100px;
+                margin: 0 auto;
             }
-            .marquee-content {
-                display: flex;
-                flex-shrink: 0;
-                min-width: 100%;
-                gap: 1rem;
-                animation: scroll-left 30s linear infinite;
-            }
-            .marquee-content:hover {
-                animation-play-state: paused;
-            }
-            @keyframes scroll-left {
-                from { transform: translateX(0); }
-                to { transform: translateX(-100%); }
+            .testimonial-card {
+                max-width: 100%;
+                min-width: 0;
             }
         }
 
@@ -353,19 +318,20 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="py-20 bg-[#050505]">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">What Our Customers Say</h2>
-                    <p class="text-slate-400 max-w-2xl mx-auto">Real experiences from men who transformed their daily routine with SteelPower.</p>
-                </div>
+        <section class="py-24 bg-[#050505] overflow-hidden">
+            <div class="container mx-auto px-6 mb-16 text-center">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">What Our Customers Say</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Real results from verified SteelPower users across the USA.</p>
+            </div>
 
-                <!-- Desktop Layout / Mobile Marquee Container -->
-                <div class="marquee-container">
-                    <div class="marquee-content md:grid md:grid-cols-3 md:gap-8 md:animate-none">
-                        
-                        <!-- Testimonial 1 -->
-                        <div class="testimonial-card p-8 rounded-3xl min-w-[300px] md:min-w-0">
+            <!-- Scroller Container -->
+            <div class="relative w-full">
+                <!-- Track with duplicates for infinite feel on mobile -->
+                <div class="scroller-track px-6">
+                    
+                    <!-- Card 1 -->
+                    <div class="testimonial-card p-8 rounded-3xl flex flex-col justify-between">
+                        <div>
                             <div class="flex gap-1 mb-4">
                                 <i class="star-filled w-4 h-4" data-feather="star"></i>
                                 <i class="star-filled w-4 h-4" data-feather="star"></i>
@@ -373,71 +339,109 @@
                                 <i class="star-filled w-4 h-4" data-feather="star"></i>
                                 <i class="star-filled w-4 h-4" data-feather="star"></i>
                             </div>
-                            <p class="text-slate-300 italic mb-6">"I was skeptical at first, but after 3 weeks, the fog cleared. I have more stamina for my morning gym sessions and actually stay focused through my late-night calls. Best investment I've made for my health this year."</p>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold">JD</div>
-                                <div>
-                                    <p class="text-white font-bold text-sm">James D.</p>
-                                    <p class="text-slate-500 text-xs">Verified Customer, Texas</p>
-                                </div>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mb-6">"I'm 52 and started feeling like my best days were behind me. After 4 weeks of SteelPower, my morning energy is through the roof and I feel more 'present' during the day. It's a subtle but powerful change in my overall drive."</p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold text-xs">BT</div>
+                            <div>
+                                <p class="text-white font-bold text-xs">Brian T.</p>
+                                <p class="text-slate-500 text-[10px]">Verified Customer, AZ</p>
                             </div>
                         </div>
-
-                        <!-- Testimonial 2 -->
-                        <div class="testimonial-card p-8 rounded-3xl min-w-[300px] md:min-w-0">
-                            <div class="flex gap-1 mb-4">
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                            </div>
-                            <p class="text-slate-300 italic mb-6">"Turned 45 and felt like I was running on empty. SteelPower helped me regain that 'alpha' edge. I'm waking up refreshed and my wife has definitely noticed the difference in my confidence levels. 10/10 recommend."</p>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold">MT</div>
-                                <div>
-                                    <p class="text-white font-bold text-sm">Mark T.</p>
-                                    <p class="text-slate-500 text-xs">Verified Customer, Ohio</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial 3 -->
-                        <div class="testimonial-card p-8 rounded-3xl min-w-[300px] md:min-w-0">
-                            <div class="flex gap-1 mb-4">
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                            </div>
-                            <p class="text-slate-300 italic mb-6">"No jitters, no crashes, just clean energy and drive. It's subtle but powerful. I feel like I'm 25 again without any of the side effects of other products I've tried in the past. Totally discrete shipping too!"</p>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold">SR</div>
-                                <div>
-                                    <p class="text-white font-bold text-sm">Steven R.</p>
-                                    <p class="text-slate-500 text-xs">Verified Customer, Florida</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clone for Infinite Scroll on Mobile -->
-                        <div class="testimonial-card p-8 rounded-3xl min-w-[300px] md:hidden">
-                            <div class="flex gap-1 mb-4">
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                                <i class="star-filled w-4 h-4" data-feather="star"></i>
-                            </div>
-                            <p class="text-slate-300 italic mb-6">"I was skeptical at first, but after 3 weeks, the fog cleared. I have more stamina for my morning gym sessions and actually stay focused."</p>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold">JD</div>
-                                <div><p class="text-white font-bold text-sm">James D.</p></div>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <!-- Card 2 -->
+                    <div class="testimonial-card p-8 rounded-3xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex gap-1 mb-4">
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                            </div>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mb-6">"Finally something that works without the jitters. My focus at work has improved tremendously, and I still have plenty of steam left for my family when I get home. It just makes me feel more like myself again."</p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold text-xs">ML</div>
+                            <div>
+                                <p class="text-white font-bold text-xs">Michael L.</p>
+                                <p class="text-slate-500 text-[10px]">Verified Customer, FL</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="testimonial-card p-8 rounded-3xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex gap-1 mb-4">
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                            </div>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mb-6">"Discreet shipping was a huge plus for me. As for the results, I noticed a steady climb in my confidence and stamina. It's now a permanent part of my morning routine. If you're on the fence, just try it."</p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold text-xs">RK</div>
+                            <div>
+                                <p class="text-white font-bold text-xs">Robert K.</p>
+                                <p class="text-slate-500 text-[10px]">Verified Customer, NV</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICATE CARDS (Only visible/active on mobile for infinite loop) -->
+                    <div class="testimonial-card p-8 rounded-3xl flex flex-col justify-between lg:hidden">
+                        <div>
+                            <div class="flex gap-1 mb-4">
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                            </div>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mb-6">"I'm 52 and started feeling like my best days were behind me. After 4 weeks of SteelPower, my morning energy is through the roof."</p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold text-xs">BT</div>
+                            <div><p class="text-white font-bold text-xs">Brian T.</p></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card p-8 rounded-3xl flex flex-col justify-between lg:hidden">
+                        <div>
+                            <div class="flex gap-1 mb-4">
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                            </div>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mb-6">"Finally something that works without the jitters. My focus at work has improved tremendously."</p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold text-xs">ML</div>
+                            <div><p class="text-white font-bold text-xs">Michael L.</p></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card p-8 rounded-3xl flex flex-col justify-between lg:hidden">
+                        <div>
+                            <div class="flex gap-1 mb-4">
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                                <i class="star-filled w-4 h-4" data-feather="star"></i>
+                            </div>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mb-6">"Discreet shipping was a huge plus for me. As for the results, I noticed a steady climb in my confidence."</p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                            <div class="w-10 h-10 bg-red-900/30 rounded-full flex items-center justify-center text-[#C1121F] font-bold text-xs">RK</div>
+                            <div><p class="text-white font-bold text-xs">Robert K.</p></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -575,7 +579,7 @@
                         <li><strong>Maggio M, et al. (2014)</strong>: The Interplay between Magnesium and Testosterone in Modulating Physical Function in Men. Int J Endocrinol.</li>
                         <li><strong>Fallah A, et al. (2018)</strong>: Zinc is an Essential Element for Male Fertility: A Review of Zn Roles in Men's Health. J Reprod Infertil.</li>
                         <li><strong>Neychev V, Mitev V. (2016)</strong>: Pro-sexual and androgen enhancing effects of Tribulus terrestris L. J Ethnopharmacol.</li>
-                        <li><strong>Shindel AW, et al. (2010)</strong>: Erectogenic and neurotrophic effects of icariin (Epidemium spp.) in vitro and in vivo. J Sex Med.</li>
+                        <li><strong>Shindel AW, et al. (2010)</strong>: Erectogenic and neurotrophic effects of icariin (Epimedium spp.) in vitro and in vivo. J Sex Med.</li>
                     </ul>
                 `
             }
